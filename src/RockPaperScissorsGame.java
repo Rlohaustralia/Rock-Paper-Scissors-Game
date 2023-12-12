@@ -33,6 +33,8 @@ public class RockPaperScissorsGame {
             } else if (yesOrNo == 'N' || yesOrNo == 'n') {
                 System.out.println(Emoji.personEmoji + "Please select the number of players again");
                 numberOfPlayers = keyboard.nextInt();
+
+                // Validate the user input
                 while (numberOfPlayers <= 1) {
                     System.out.println(Emoji.personEmoji + "You typed invalid number. Try again.");
                     System.out.println(Emoji.personEmoji + "How many players? ");
