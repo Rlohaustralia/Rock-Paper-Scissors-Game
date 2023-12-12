@@ -5,33 +5,21 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-
-        // Emoji definitions
-        String rockEmoji = "\u270A";
-        String paperEmoji = "\u270B";
-        String scissorsEmoji = "\u270C";
-        String flagEmoji = "\uD83D\uDEA9";
-        String personEmoji = "\uD83D\uDE4D";
-        String speechBalloonEmoji = "\uD83D\uDCAC";
-        String exclamationMarkEmoji = "\u2757";
-        String celebrationEmoji = "\uD83D\uDE4C";
-
-
         // Ask users the number of players
         Scanner keyboard = new Scanner(System.in);
-        System.out.println("Let's play the rock-paper-scissors game!\n" + personEmoji + "How many players? ");
+        System.out.println("Let's play the rock-paper-scissors game!\n" + Emoji.personEmoji + "How many players? ");
         int numberOfPlayers;
         numberOfPlayers = keyboard.nextInt();
 
 
         // Validate the user input
         while (numberOfPlayers <= 1) {
-            System.out.println(personEmoji + "You typed invalid number. Try again.");
-            System.out.println(personEmoji + "How many players? ");
+            System.out.println(Emoji.personEmoji + "You typed invalid number. Try again.");
+            System.out.println(Emoji.personEmoji + "How many players? ");
             numberOfPlayers = keyboard.nextInt();
         }
-        System.out.println(personEmoji + "You typed: " + numberOfPlayers);
-        System.out.println(personEmoji + "Is this correct? (Y or N)");
+        System.out.println(Emoji.personEmoji + "You typed: " + numberOfPlayers);
+        System.out.println(Emoji.personEmoji + "Is this correct? (Y or N)");
         char yesOrNo;
         yesOrNo = keyboard.next().charAt(0);
 
@@ -39,16 +27,16 @@ public class Main {
         // Validate the user's confirmation
         while (true) {
             if (yesOrNo == 'Y' || yesOrNo == 'y') {
-                System.out.println(personEmoji + "Cool. Let's get started! \n");
+                System.out.println(Emoji.personEmoji + "Cool. Let's get started! \n");
                 break;
             } else if (yesOrNo == 'N' || yesOrNo == 'n') {
-                System.out.println(personEmoji + "Please select the number of players again");
+                System.out.println(Emoji.personEmoji + "Please select the number of players again");
                 numberOfPlayers = keyboard.nextInt();
-                System.out.println(personEmoji + "You typed: " + numberOfPlayers);
-                System.out.println(personEmoji + "Is this correct? (Y or N)");
+                System.out.println(Emoji.personEmoji + "You typed: " + numberOfPlayers);
+                System.out.println(Emoji.personEmoji + "Is this correct? (Y or N)");
                 yesOrNo = keyboard.next().charAt(0);
             } else {
-                System.out.println(personEmoji + "Please answer 'Y' or 'N'");
+                System.out.println(Emoji.personEmoji + "Please answer 'Y' or 'N'");
                 yesOrNo = keyboard.next().charAt(0);
             }
         }
@@ -61,16 +49,16 @@ public class Main {
         ArrayList<String> chosenArr = new ArrayList<>();
         while (chosenArr.size() != 1) {
             chosenArr.clear();
-            System.out.printf("\n" + flagEmoji + "Please select ONE among 'R(Rock %s), 'P(Paper %s)', and 'S(Scissors %s)'\n", rockEmoji, paperEmoji, scissorsEmoji);
+            System.out.printf("\n" + Emoji.flagEmoji + "Please select ONE among 'R(Rock %s), 'P(Paper %s)', and 'S(Scissors %s)'\n", Emoji.rockEmoji, Emoji.paperEmoji, Emoji.scissorsEmoji);
 
             // Collect choices from each player
             for (int i = 1; i < numberOfPlayers + 1; i++) {
-                System.out.println(speechBalloonEmoji + "Player" + i);
+                System.out.println(Emoji.speechBalloonEmoji + "Player" + i);
                 String choice = keyboard.next().toUpperCase();
 
                 // Validate the user input
                 while (!("R".equals(choice) || "P".equals(choice) || "S".equals(choice))) {
-                    System.out.printf(exclamationMarkEmoji + "Again. Please select ONE among 'R(Rock %s), 'P(Paper %s)', and 'S(Scissors %s)'", rockEmoji, paperEmoji, scissorsEmoji);
+                    System.out.printf(Emoji.exclamationMarkEmoji + "Again. Please select ONE among 'R(Rock %s), 'P(Paper %s)', and 'S(Scissors %s)'", Emoji.rockEmoji, Emoji.paperEmoji, Emoji.scissorsEmoji);
                     choice = keyboard.next().toUpperCase();
                 }
                 chosenArr.add(choice);
@@ -109,7 +97,7 @@ public class Main {
                     (countP == chosenArr.size()) || (countR == chosenArr.size()) || (countS == chosenArr.size())) {
 
                 // Clear the array when it's a tie
-                System.out.println(personEmoji + "A tie. Let's do it again!");
+                System.out.println(Emoji.personEmoji + "A tie. Let's do it again!");
                 chosenArr.clear();
 
                 // Handle game rules for non-tie scenarios
@@ -124,7 +112,7 @@ public class Main {
                     }
                 }
                 if (chosenArr.size() >= 2) {
-                    System.out.println(personEmoji + chosenArr + " won." + " Next round!");
+                    System.out.println(Emoji.personEmoji + chosenArr + " won." + " Next round!");
                 }
 
 
@@ -139,7 +127,7 @@ public class Main {
                     }
                 }
                 if (chosenArr.size() >= 2) {
-                    System.out.println(personEmoji + chosenArr + " won." + " Next round!");
+                    System.out.println(Emoji.personEmoji + chosenArr + " won." + " Next round!");
                 }
 
 
@@ -154,18 +142,18 @@ public class Main {
                     }
                 }
                 if (chosenArr.size() >= 2) {
-                    System.out.println(personEmoji + chosenArr + " won." + " Next round!");
+                    System.out.println(Emoji.personEmoji + chosenArr + " won." + " Next round!");
                 }
             }
 
 
             // Display the result of the game
             if (chosenArr.size() == 1 && chosenArr.get(0).equals("P")) {
-                System.out.println("\n" + celebrationEmoji + "Congrats! Winner is Player number " + (winnerP + 1));
+                System.out.println("\n" + Emoji.celebrationEmoji + "Congrats! Winner is Player number " + (winnerP + 1));
             } else if (chosenArr.size() == 1 && chosenArr.get(0).equals("R")) {
-                System.out.println("\n" +celebrationEmoji + " Congrats! Winner is Player number " + (winnerR + 1));
+                System.out.println("\n" + Emoji.celebrationEmoji + " Congrats! Winner is Player number " + (winnerR + 1));
             } else if (chosenArr.size() == 1 && chosenArr.get(0).equals("S")) {
-                System.out.println("\n" +celebrationEmoji + " Congrats! Winner is Player number " + (winnerS + 1));
+                System.out.println("\n" + Emoji.celebrationEmoji + " Congrats! Winner is Player number " + (winnerS + 1));
             }
 
         }
