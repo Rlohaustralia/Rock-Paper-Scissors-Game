@@ -2,11 +2,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 // Rock, Paper, Scissors game for multiple players
-public class Main {
+public class RockPaperScissorsGame {
     public static void main(String[] args) {
 
         // Ask users the number of players
         Scanner keyboard = new Scanner(System.in);
+
         System.out.println("Let's play the rock-paper-scissors game!\n" + Emoji.personEmoji + "How many players? ");
         int numberOfPlayers;
         numberOfPlayers = keyboard.nextInt();
