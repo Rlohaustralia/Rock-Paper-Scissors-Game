@@ -1,63 +1,27 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// Rock, Paper, Scissors game for multiple players
-public class RockPaperScissorsGame {
+public class Temp {
+
     public static void main(String[] args) {
+        playGame();
+    }
+
+    private static void playGame() {
 
         // Ask users the number of players
         Scanner keyboard = new Scanner(System.in);
-
         System.out.println("Let's play the rock-paper-scissors game!\n" + Emoji.personEmoji + "How many players? ");
-        int numberOfPlayers = keyboard.nextInt();
-
-
-        // Validate the user input
-        while (numberOfPlayers <= 1) {
-            System.out.println(Emoji.personEmoji + "You typed invalid number. Try again.");
-            System.out.println(Emoji.personEmoji + "How many players? ");
-            numberOfPlayers = keyboard.nextInt();
-        }
-
-        System.out.println(Emoji.personEmoji + "You typed: " + numberOfPlayers);
-        System.out.println(Emoji.personEmoji + "Is this correct? (Y or N)");
-        char yesOrNo;
-        yesOrNo = keyboard.next().charAt(0);
-
-
-        // Validate the user's confirmation
-        while (true) {
-            if (yesOrNo == 'Y' || yesOrNo == 'y') {
-                System.out.println(Emoji.personEmoji + "Cool. Let's get started! \n");
-                break;
-            } else if (yesOrNo == 'N' || yesOrNo == 'n') {
-                System.out.println(Emoji.personEmoji + "Please select the number of players again");
-                numberOfPlayers = keyboard.nextInt();
-                while (numberOfPlayers <= 1) {
-                    System.out.println(Emoji.personEmoji + "You typed invalid number. Try again.");
-                    System.out.println(Emoji.personEmoji + "How many players? ");
-                    numberOfPlayers = keyboard.nextInt();
-                }
-                System.out.println(Emoji.personEmoji + "You typed: " + numberOfPlayers);
-                System.out.println(Emoji.personEmoji + "Is this correct? (Y or N)");
-                yesOrNo = keyboard.next().charAt(0);
-            } else {
-                System.out.println(Emoji.personEmoji + "Please answer 'Y' or 'N'");
-                yesOrNo = keyboard.next().charAt(0);
-            }
-        }
-
-
-
-
+        int numberOfPlayers = getNumberOfPlayers(keyboard);
 
         // Game start
         ArrayList<String> chosenArr = new ArrayList<>();
         while (chosenArr.size() != 1) {
             chosenArr.clear();
-            System.out.printf("\n" + Emoji.flagEmoji + "Please select ONE among 'R(Rock %s), 'P(Paper %s)', and 'S(Scissors %s)'\n", Emoji.rockEmoji, Emoji.paperEmoji, Emoji.scissorsEmoji);
 
             // Collect choices from each player
+            System.out.printf("\n" + Emoji.flagEmoji + "Please select ONE among 'R(Rock %s), 'P(Paper %s)', and 'S(Scissors %s)'\n", Emoji.rockEmoji, Emoji.paperEmoji, Emoji.scissorsEmoji);
+
             for (int i = 1; i < numberOfPlayers + 1; i++) {
                 System.out.println(Emoji.speechBalloonEmoji + "Player" + i);
                 String choice = keyboard.next().toUpperCase();
@@ -153,18 +117,55 @@ public class RockPaperScissorsGame {
             }
 
 
-            // Display the result of the game
-            if (chosenArr.size() == 1 && chosenArr.get(0).equals(Choices.PAPER)) {
-                System.out.println("\n" + Emoji.celebrationEmoji + "Congrats! Winner is Player number " + (winnerP + 1));
-            } else if (chosenArr.size() == 1 && chosenArr.get(0).equals(Choices.ROCK)) {
-                System.out.println("\n" + Emoji.celebrationEmoji + " Congrats! Winner is Player number " + (winnerR + 1));
-            } else if (chosenArr.size() == 1 && chosenArr.get(0).equals(Choices.SCISSORS)) {
-                System.out.println("\n" + Emoji.celebrationEmoji + " Congrats! Winner is Player number " + (winnerS + 1));
-            }
+        // Display the result of the game
+        displayResult(chosenArr, winnerP, winnerR, winnerS);
 
         }
 
 
     }
+    private static int getNumberOfPlayers(Scanner keyboard) {
+        int numberOfPlayers = keyboard.nextInt();
 
+        // Validate the user input
+        while (numberOfPlayers <= 1) {
+            System.out.println(Emoji.personEmoji + "You typed invalid number. Try again.");
+            System.out.println(Emoji.personEmoji + "How many players? ");
+            numberOfPlayers = keyboard.nextInt();
+        }
+        System.out.println(Emoji.personEmoji + "You typed: " + numberOfPlayers);
+        System.out.println(Emoji.personEmoji + "Is this correct? (Y or N)");
+        char yesOrNo = keyboard.next().charAt(0);
+
+
+        // Validate the user's confirmation
+        while (true) {
+            if (yesOrNo == 'Y' || yesOrNo == 'y') {
+                System.out.println(Emoji.personEmoji + "Cool. Let's get started! \n");
+                break;
+            } else if (yesOrNo == 'N' || yesOrNo == 'n') {
+                System.out.println(Emoji.personEmoji + "Please select the number of players again");
+                numberOfPlayers = keyboard.nextInt();
+                System.out.println(Emoji.personEmoji + "You typed: " + numberOfPlayers);
+                System.out.println(Emoji.personEmoji + "Is this correct? (Y or N)");
+                yesOrNo = keyboard.next().charAt(0);
+            } else {
+                System.out.println(Emoji.personEmoji + "Please answer 'Y' or 'N'");
+                yesOrNo = keyboard.next().charAt(0);
+            }
+        }
+        return numberOfPlayers;
+    }
+
+
+    private static void displayResult(ArrayList<String> chosenArr, int winnerP, int winnerR, int winnerS){
+        // Display the result of the game
+        if (chosenArr.size() == 1 && chosenArr.get(0).equals(Choices.PAPER)) {
+            System.out.println("\n" + Emoji.celebrationEmoji + "Congrats! Winner is Player number " + (winnerP + 1));
+        } else if (chosenArr.size() == 1 && chosenArr.get(0).equals(Choices.ROCK)) {
+            System.out.println("\n" + Emoji.celebrationEmoji + " Congrats! Winner is Player number " + (winnerR + 1));
+        } else if (chosenArr.size() == 1 && chosenArr.get(0).equals(Choices.SCISSORS)) {
+            System.out.println("\n" + Emoji.celebrationEmoji + " Congrats! Winner is Player number " + (winnerS + 1));
+        }
+    }
 }
