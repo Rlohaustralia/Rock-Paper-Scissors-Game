@@ -1,4 +1,5 @@
 public class Emoji {
+
     // Emoji definitions
     public static final String rockEmoji = "\u270A";
     public static final String paperEmoji = "\u270B";

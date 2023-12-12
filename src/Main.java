@@ -57,7 +57,7 @@ public class Main {
                 String choice = keyboard.next().toUpperCase();
 
                 // Validate the user input
-                while (!("R".equals(choice) || "P".equals(choice) || "S".equals(choice))) {
+                while (!(Choices.ROCK.equals(choice) || Choices.PAPER.equals(choice) || Choices.SCISSORS.equals(choice))) {
                     System.out.printf(Emoji.exclamationMarkEmoji + "Again. Please select ONE among 'R(Rock %s), 'P(Paper %s)', and 'S(Scissors %s)'", Emoji.rockEmoji, Emoji.paperEmoji, Emoji.scissorsEmoji);
                     choice = keyboard.next().toUpperCase();
                 }
@@ -77,15 +77,15 @@ public class Main {
 
             // Count occurrences of each choice and determine winners
             for (String check : chosenArr) {
-                if ("R".equals(check)) {
+                if (Choices.ROCK.equals(check)) {
                     countR++;
                     winnerR = chosenArr.indexOf("R");
 
-                } else if ("P".equals(check)) {
+                } else if (Choices.PAPER.equals(check)) {
                     countP++;
                     winnerP = chosenArr.indexOf("P");
 
-                } else if ("S".equals(check)) {
+                } else if (Choices.SCISSORS.equals(check)) {
                     countS++;
                     winnerS = chosenArr.indexOf("S");
                 }
@@ -105,7 +105,7 @@ public class Main {
             } else if (countP > 0 && countR > 0 && countS == 0 && chosenArr.size() > 1) {
 
                 for (int r = 0; r < chosenArr.size(); r++) {
-                    if ("R".equals(chosenArr.get(r))) {
+                    if (Choices.ROCK.equals(chosenArr.get(r))) {
                         chosenArr.remove(r);
                         r--;
                         numberOfPlayers = chosenArr.size();
@@ -120,7 +120,7 @@ public class Main {
             } else if (countP > 0 && countR == 0 && countS > 0 && chosenArr.size() > 1) {
 
                 for (int s = 0; s < chosenArr.size(); s++) {
-                    if ("P".equals(chosenArr.get(s))) {
+                    if (Choices.PAPER.equals(chosenArr.get(s))) {
                         chosenArr.remove(s);
                         s--;
                         numberOfPlayers = chosenArr.size();
@@ -135,7 +135,7 @@ public class Main {
             } else if (countP == 0 && countR > 0 && countS > 0 && chosenArr.size() > 1) {
 
                 for (int r = 0; r < chosenArr.size(); r++) {
-                    if ("S".equals(chosenArr.get(r))) {
+                    if (Choices.SCISSORS.equals(chosenArr.get(r))) {
                         chosenArr.remove(r);
                         r--;
                         numberOfPlayers = chosenArr.size();
@@ -148,11 +148,11 @@ public class Main {
 
 
             // Display the result of the game
-            if (chosenArr.size() == 1 && chosenArr.get(0).equals("P")) {
+            if (chosenArr.size() == 1 && chosenArr.get(0).equals(Choices.PAPER)) {
                 System.out.println("\n" + Emoji.celebrationEmoji + "Congrats! Winner is Player number " + (winnerP + 1));
-            } else if (chosenArr.size() == 1 && chosenArr.get(0).equals("R")) {
+            } else if (chosenArr.size() == 1 && chosenArr.get(0).equals(Choices.ROCK)) {
                 System.out.println("\n" + Emoji.celebrationEmoji + " Congrats! Winner is Player number " + (winnerR + 1));
-            } else if (chosenArr.size() == 1 && chosenArr.get(0).equals("S")) {
+            } else if (chosenArr.size() == 1 && chosenArr.get(0).equals(Choices.SCISSORS)) {
                 System.out.println("\n" + Emoji.celebrationEmoji + " Congrats! Winner is Player number " + (winnerS + 1));
             }
 
