@@ -1,4 +1,4 @@
-// Code Writer: Eojin Ra
+// Developer : Eojin Ra
 // This source code is a simple console-based Rock-Paper-Scissors game implemented in Java.
 // Last Updated : 18 Dec 2023
 
