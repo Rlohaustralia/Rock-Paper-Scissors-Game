@@ -1,3 +1,7 @@
+// Code Writer: Eojin Ra
+// This source code is a simple console-based Rock-Paper-Scissors game implemented in Java.
+// Last Updated : 18 Dec 2023
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -179,4 +183,7 @@ public class Main {
             System.out.println("\n" + Emoji.celebrationEmoji + " Congrats! Winner is Player number " + (winnerS + 1));
         }
     }
+
+
+
 }
